@@ -1,0 +1,52 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: "Apps";
+    drun-display-format: "{icon} {name}";
+    font: "JetBrains Mono 11";
+}
+
+@theme "/dev/null"
+
+* {
+    bg:        #000000;
+    bg-alt:    #0a0a0a;
+    fg:        #e6e6e6;
+    accent:    #8ab4f8;
+    selected:  #1a1a1a;
+    border:    #111111;
+}
+
+window {
+    background-color: @bg;
+    border: 2px;
+    border-color: @border;
+    border-radius: 12px;
+    width: 600px;
+}
+
+mainbox {
+    background-color: @bg;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    padding: 10px;
+    border-radius: 8px;
+    text-color: @fg;
+    border: 1px;
+    border-color: @border;
+}
+
+listview {
+    padding: 10px;
+    spacing: 6px;
+    background-color: @bg;
+}
+
+element {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: @bg;
+}
