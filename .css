@@ -1,0 +1,95 @@
+* Waybar Style Sheet (Dark & Transparent) */
+
+/* Reset and global styles */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", "Font Awesome 6 Free", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+/* Entire bar background */
+window#waybar {
+    background-color: rgba(20, 20, 24, 0.65);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Module general styling */
+#workspaces,
+#mode,
+#clock,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#battery,
+#tray {
+    background-color: rgba(30, 30, 36, 0.5);
+    padding: 0px 12px;
+    margin: 4px 2px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Workspaces specific */
+#workspaces button {
+    padding: 0px 5px;
+      background-color: transparent;
+    color: #ffffff;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#workspaces button.focused {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom: 2px solid #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+/* Highlight specific modules if needed */
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#battery.warning {
+    background-color: rgba(241, 196, 15, 0.5);
+    color: #000000;
+}
+
+#battery.critical:not(.charging) {
+    background-color: rgba(231, 76, 60, 0.7);
+    color: #ffffff;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(231, 76, 60, 0.2);
+        color: #ffffff;
+    }
+}
+
+/* Tray padding */
+#tray {
+    padding-right: 8px;
+}
