@@ -1,0 +1,192 @@
+/*****----- Configuration -----*****/
+configuration {
+    /* Set only to drun so you only see apps */
+    modi:                       "drun";
+    default-mode:               "drun";
+    show-icons:                 true;
+    drun-display-format:        "{name}";
+    
+    /* Font embedded directly */
+    font:                       "JetBrainsMono Nerd Font 11";
+}
+
+/*****----- Global Color Variables (Pitch Black Theme) -----*****/
+* {
+    background:     #000000;       /* Deep solid black background */
+    background-alt: #111111;       /* Slightly lighter black for text boxes/buttons */
+    foreground:     #FFFFFF;       /* Crisp white for readable text */
+    selected:       #00008B;       /* Electric teal/cyan for active selections and highlights */
+    border:         #333333;       /* Subtle dark grey for window frames */
+    urgent:         #FF3366;       /* Soft neon pink/red for alternative modes */
+}
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       800px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      2px solid;
+    border-radius:               15px;
+    border-color:                @border;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     30px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "message", "listview" ]; /* Removed mode-switcher for clean app-only look */
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      0px 2px 2px 0px;
+    border-radius:               10px;
+    border-color:                var(selected);
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    padding:                     0px;
+    expand:                      false;
+    str:                         " ";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+entry {
+    enabled:                     true;
+    padding:                     0px;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search Apps...";
+    placeholder-color:           inherit;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     2;
+    lines:                       7;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     5px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+    border:                      0;
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     8px;
+    border-radius:               10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color:            var(background);
+    text-color:                  var(foreground);
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.active {
+    background-color:            var(background);
+    text-color:                  var(foreground);
+    border:                      0px 2px 2px 0px;
+    border-radius:               10px;
+    border-color:                var(selected);
+}
+
+element normal.active,
+element alternate.active,
+element selected.urgent {
+    background-color:            var(background);
+    text-color:                  var(foreground);
+    border:                      2px;
+    border-color:                var(urgent);
+}
+
+element selected.normal {
+    background-color:            var(background-alt);
+    text-color:                  var(selected);
+    border:                      0px 2px 2px 0px;
+    border-radius:               10px;
+    border-color:                var(selected);
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        28px; /* Slightly larger for clear app icons */
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Message -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     10px;
+    border-radius:               0px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+textbox {
+    background-color:            transparent;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    highlight:                   none;
+    placeholder-color:           @foreground;
+    blink:                       true;
+    markup:                      true;
+}
+
+error-message {
+    padding:                     30px;
+    background-color:            @background;
+    text-color:                  @foreground;
+}
+
